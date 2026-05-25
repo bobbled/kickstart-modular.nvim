@@ -5,22 +5,15 @@ return {
     'nvim-treesitter/nvim-treesitter',
     lazy = false,
     build = ':TSUpdate',
-    branch = 'master',
-    -- [[ Configure Treesitter ]] See `:help nvim-treesitter-intro`
+    branch = 'main',
+    -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+    -- The new API (nvim-treesitter main / Neovim 0.12+) no longer uses
+    -- nvim-treesitter.configs. Highlighting and indent are built into Neovim.
+    -- setup() only accepts { install_dir = '...' } now.
     config = function()
-      require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
-
-        highlight = {
-          enable = true,
-        },
-
-        indent = {
-          enable = true,
-        },
-
-        auto_install = true,
-      }
+      -- Install parsers on demand. Highlighting/indent are enabled by default
+      -- in Neovim 0.12 via vim.treesitter; no explicit enable needed.
+      require('nvim-treesitter').install({ 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' })
     end,
   },
 }
