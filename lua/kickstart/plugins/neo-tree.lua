@@ -19,11 +19,15 @@ return {
   ---@type neotree.Config
   opts = {
     filesystem = {
+      use_libuv_file_watcher = true,
       window = {
         mappings = {
           ['\\'] = 'close_window',
         },
       },
     },
+    git_status = {
+      enabled = true
+    }
   },
 }

@@ -22,6 +22,11 @@ return {
   ---@type Gitsigns.Config
   ---@diagnostic disable-next-line: missing-fields
   opts = {
+    current_line_blame = true,
+    current_line_blame_opts = {
+      delay = 300,
+      virt_text_pos = 'eol',
+    },
     signs = {
       add = { text = '+' }, ---@diagnostic disable-line: missing-fields
       change = { text = '~' }, ---@diagnostic disable-line: missing-fields
