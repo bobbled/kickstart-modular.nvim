@@ -70,4 +70,59 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function() vim.hl.on_yank() end,
 })
 
+vim.keymap.set(
+  'n',
+  '<leader>rd',
+  ":!rsync -avz --delete ../${PWD\\#\\#*/} $( [ -f rsync.excludes ] && echo '--exclude-from=rsync.excludes') dev:bitbucket/<CR>",
+  { desc = 'Sync to dev environment' }
+)
+vim.keymap.set(
+  'n',
+  '<leader>rs',
+  ":!rsync -avz --delete ../${PWD\\#\\#*/} $( [ -f rsync.excludes ] && echo '--exclude-from=rsync.excludes') stgansz2:bitbucket/<CR>",
+  { desc = 'Sync to ECSstaging environment' }
+)
+vim.keymap.set(
+  'n',
+  '<leader>rp',
+  ":!rsync -avz --delete ../${PWD\\#\\#*/} $( [ -f rsync.excludes ] && echo '--exclude-from=rsync.excludes') prodans:bitbucket/<CR>",
+  { desc = 'Sync to ECS production environment' }
+)
+vim.keymap.set(
+  'n',
+  '<leader>rf',
+  ":!rsync -avz --delete ../${PWD\\#\\#*/} $( [ -f rsync.excludes ] && echo '--exclude-from=rsync.excludes') fdp:bitbucket/<CR>",
+  { desc = 'Sync to IFI DP bastion' }
+)
+
+vim.keymap.set(
+  'n',
+  '<leader>ro',
+  ":!rsync -avz --delete ../${PWD\\#\\#*/} $( [ -f rsync.excludes ] && echo '--exclude-from=rsync.excludes') foct:bitbucket/<CR>",
+  { desc = 'Sync to IFI octopus node' }
+)
+
+vim.keymap.set(
+  'n',
+  '<leader>ri',
+  ":!rsync -avz --delete ../${PWD\\#\\#*/} $( [ -f rsync.excludes ] && echo '--exclude-from=rsync.excludes') fstg:bitbucket/<CR>",
+  { desc = 'Sync to IFI staging bastion' }
+)
+
+vim.keymap.set(
+  'n',
+  '<leader>rj',
+  ":!rsync -avz --delete ../${PWD\\#\\#*/} $( [ -f rsync.excludes ] && echo '--exclude-from=rsync.excludes') fjenk:bitbucket/<CR>",
+  { desc = 'Sync to IFI jenkins' }
+)
+
+vim.keymap.set(
+  'n',
+  '<leader>r8',
+  ":!rsync -avz --delete ../${PWD\\#\\#*/} $( [ -f rsync.excludes ] && echo '--exclude-from=rsync.excludes') fk8s:bitbucket/<CR>",
+  { desc = 'Sync to IFI k8s node' }
+)
+
+vim.keymap.set('n', '<leader>ry', ':!sync_repos.sh<CR>', { desc = 'Force Gitea Sync' })
+
 -- vim: ts=2 sts=2 sw=2 et
